@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interview Scheduled | RecruitWay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .details-card {
+            background-color: #f0f8ff;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .details-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .details-card p {
+            margin: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            background: #f5f7fa;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        .company-info {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .signature {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .important-note {
+            background-color: #fffaf0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Interview Scheduled</h1>
+        </div>
+
+        <div class="content">
+            <p class="greeting">Dear <strong>
+                    <%= interviewerName %>
+                </strong>,</p>
+            <p>You have been scheduled to conduct an interview through RecruitWay. Please review the details below:</p>
+
+            <div class="details-card">
+                <h3>Interview Details</h3>
+                <p><strong>Candidate:</strong>
+                    <%= candidateName %>
+                </p>
+                <p><strong>Position:</strong>
+                    <%= jobTitle %>
+                </p>
+                <p><strong>Date:</strong>
+                    <%= date %>
+                </p>
+                <p><strong>Time:</strong>
+                    <%= time %> - <%= endTime %>
+                </p>
+                <p><strong>Additional Notes:</strong>
+                    <%= notes %>
+                </p>
+            </div>
+
+            <div class="important-note">
+                <p><strong>Important:</strong> Please ensure you're prepared and available for the interview at the
+                    scheduled time. Contact with recruitWay if any changes are needed.</p>
+            </div>
+
+            <div class="signature">
+                <p>Best regards,<br>
+                    <strong>RecruitWay Interview Team</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://linkedin.com/company/recruitway">LinkedIn</a> |
+                <a href="https://twitter.com/recruitway">Twitter</a> |
+                <a href="https://facebook.com/recruitway">Facebook</a>
+            </div>
+            <div class="company-info">
+                <p>
+                    RecruitWay Inc.<br>
+                    123 Business Avenue, Suite 100<br>
+                    San Francisco, CA 94107
+                </p>
+            </div>
+            <p>This is an automated message. Please do not reply directly to this email.</p>
+        </div>
+    </div>
+</body>
+
+</html>

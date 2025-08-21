@@ -1,0 +1,128 @@
+
+.timeline {
+  padding: 11px 40px 0px 5px;
+  position: relative;
+}
+.timeline ul {
+  padding: 0;
+  list-style: none;
+  position: relative;
+}
+.default-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #bdc3c7;
+  height: 100%;
+}
+.draw-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #0d6efd;
+  height: 0;
+  transition: height 0.50s ease-in-out; /* Increased duration for slower animation */
+}
+
+.timeline ul li {
+  list-style: none;
+  position: relative;
+  width: 4px;
+  margin: 0 auto;
+  height: 156px;
+  background:#0d6efd;
+}
+
+.timeline ul li::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #bdc3c7;
+  transition: all 0.60s ease-in-out; /* Slower transition for the dot */
+}
+
+.timeline ul li.in-view::before {
+  background: #0d6efd;
+  width: 20px;
+  height: 20px;
+}
+.ml-15{
+  margin-left:15px;
+}
+.margin-top-box{
+  margin-top:60px;
+}
+// second line annimation
+.timeliney {
+  padding: 11px 40px 0px 5px;
+  position: relative;
+}
+.timeliney ul {
+  padding: 0;
+  list-style: none;
+  position: relative;
+}
+.default-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #bdc3c7;
+  height: 100%;
+}
+.draw-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #0d6efd;
+  height: 0;
+  transition: height 0.50s ease-in-out; /* Increased duration for slower animation */
+}
+
+.timeliney ul li {
+  list-style: none;
+  position: relative;
+  width: 4px;
+  margin: 0 auto;
+  height:240px;
+  background:#0d6efd;
+}
+
+.timeliney ul li::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #bdc3c7;
+  transition: all 0.60s ease-in-out; /* Slower transition for the dot */
+}
+
+.timeliney ul li.in-view::before {
+  background: #0d6efd;
+  width: 20px;
+  height: 20px;
+}
+@media (max-width:776px) {
+  .timeline ul li {
+    display: none ;
+  }
+}
+@media (max-width:776px) {
+  .timeliney ul li {
+    display: none ;
+  }
+}
+
+

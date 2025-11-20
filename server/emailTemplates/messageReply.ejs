@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response to Your Message</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .message-container {
+            margin: 25px 0;
+        }
+
+        .message-card {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4e73df;
+            margin-bottom: 20px;
+        }
+
+        .message-card h3 {
+            color: #4e73df;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .message-card h3 i {
+            margin-right: 10px;
+        }
+
+        .message-content {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e3e6f0;
+        }
+
+        .response-card {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #36b9cc;
+        }
+
+        .response-card h3 {
+            color: #36b9cc;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .response-card h3 i {
+            margin-right: 10px;
+        }
+
+        .response-content {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e3e6f0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            background: #f5f7fa;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #4e73df;
+            font-weight: 500;
+        }
+
+        .company-info {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .signature {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .greeting {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Response to Your Message</h1>
+        </div>
+
+        <div class="content">
+            <p class="greeting">Hello <strong>
+                    <%= userName %>
+                </strong>,</p>
+
+            <p>Thank you for reaching out to us. We've reviewed your message and are pleased to provide you with a
+                response.</p>
+
+            <div class="message-container">
+                <div class="message-card">
+                    <h3><i class="bi bi-chat-dots"></i> Your Original Message</h3>
+                    <div class="message-content">
+                        <%= oldMessage %>
+                    </div>
+                </div>
+
+                <div class="response-card">
+                    <h3><i class="bi bi-reply"></i> Our Response</h3>
+                    <div class="response-content">
+                        <%= newMessage %>
+                    </div>
+                </div>
+            </div>
+
+            <p>If you have any further questions or need additional assistance, please don't hesitate to contact us
+                again.</p>
+
+            <div class="signature">
+                <p>Best regards,<br>
+                    <strong>The Support Team</strong><br>
+                    RecruitWay
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://linkedin.com/company/recruitway">LinkedIn</a> |
+                <a href="https://twitter.com/recruitway">Twitter</a> |
+                <a href="https://facebook.com/recruitway">Facebook</a>
+            </div>
+            <div class="company-info">
+                <p>
+                    RecruitWay Inc.<br>
+                    123 Business Avenue, Suite 100<br>
+                    San Francisco, CA 94107
+                </p>
+            </div>
+            <p>This is an automated message. Please do not reply directly to this email.</p>
+        </div>
+    </div>
+</body>
+
+</html>

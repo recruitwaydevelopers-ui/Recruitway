@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary-color: #06b6d4;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --dark: #1f2937;
+            --gray-dark: #4b5563;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --gray-lighter: #f3f4f6;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--gray-lighter);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            width: 40%;
+            min-width: 300px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            padding: 0.25rem 0;
+            font-size: 0.95rem;
+        }
+
+        .search-bar i {
+            color: var(--gray);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .jobs-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .results-count {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .job-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .job-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-lighter);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .company-name {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .job-location {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-location i {
+            margin-right: 0.5rem;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: var(--gray-lighter);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+
+        .job-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .full-time {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+        }
+
+        .part-time {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning-color);
+        }
+
+        .contract {
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .remote {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary-color);
+        }
+
+        .job-card-footer {
+            padding: 1.5rem;
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .salary {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .view-details-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--gray-lighter);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-company-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-company-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-lighter);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .modal-company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-company-details h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-company-name {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .modal-job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: var(--gray-dark);
+        }
+
+        .meta-item i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .modal-section p, .modal-section ul {
+            color: var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        .modal-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--gray-lighter);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-salary {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .apply-btn {
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .apply-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .apply-btn.applied {
+            background-color: var(--success-color);
+            pointer-events: none;
+        }
+
+        .apply-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--success-color);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            align-items: center;
+            animation: slideInRight 0.3s ease;
+            z-index: 2000;
+        }
+
+        .notification.show {
+            display: flex;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .modal-job-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .apply-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    <span>JobFinder</span>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for jobs, companies, or keywords...">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Job</h1>
+                <p>Discover opportunities that match your skills and aspirations from top companies worldwide</p>
+                <div class="filter-section">
+                    <button class="filter-btn active">All Jobs</button>
+                    <button class="filter-btn">Remote</button>
+                    <button class="filter-btn">Full-time</button>
+                    <button class="filter-btn">Part-time</button>
+                    <button class="filter-btn">Contract</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="jobs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Opportunities</h2>
+                <span class="results-count">Showing 6 of 2,456 jobs</span>
+            </div>
+            <div class="jobs-grid" id="jobsGrid">
+                <!-- Job cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Details Modal -->
+    <div class="modal" id="jobModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-company-info">
+                    <div class="modal-company-logo" id="modalCompanyLogo"></div>
+                    <div class="modal-company-details">
+                        <h2 id="modalJobTitle"></h2>
+                        <div class="modal-company-name" id="modalCompanyName"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-job-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modalLocation"></span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span id="modalType"></span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="modalExperience"></span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span id="modalEducation"></span>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>Job Description</h3>
+                    <p id="modalDescription"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Responsibilities</h3>
+                    <ul id="modalResponsibilities"></ul>
+                </div>
+                <div class="modal-section">
+                    <h3>Requirements</h3>
+                    <ul id="modalRequirements"></ul>
+                </div>
+                <div class="modal-section">
+                    <h3>Benefits</h3>
+                    <ul id="modalBenefits"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-salary" id="modalSalary"></div>
+                <button class="apply-btn" id="applyBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Application submitted successfully!</span>
+    </div>
+
+    <script>
+        // Random job data
+        const jobsData = [
+            {
+                id: 1,
+                title: "Senior Frontend Developer",
+                company: "TechVision Inc.",
+                location: "San Francisco, CA",
+                type: "full-time",
+                remote: false,
+                salary: "$120,000 - $150,000",
+                experience: "5+ years",
+                education: "Bachelor's degree",
+                tags: ["React", "TypeScript", "CSS"],
+                description: "We are looking for a talented Senior Frontend Developer to join our growing team. You will be responsible for building user-facing features and ensuring the technical feasibility of UI/UX designs.",
+                responsibilities: [
+                    "Develop new user-facing features using React.js",
+                    "Build reusable components and front-end libraries for future use",
+                    "Translate designs and wireframes into high-quality code",
+                    "Optimize components for maximum performance across a vast array of web-capable devices and browsers"
+                ],
+                requirements: [
+                    "5+ years of experience in frontend development",
+                    "Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model",
+                    "Thorough understanding of React.js and its core principles",
+                    "Experience with popular React.js workflows (such as Redux or Flux)",
+                    "Familiarity with modern front-end build pipelines and tools"
+                ],
+                benefits: [
+                    "Competitive salary and equity package",
+                    "Comprehensive health, dental, and vision insurance",
+                    "Flexible work hours and remote work options",
+                    "Professional development opportunities",
+                    "Generous paid time off and holidays"
+                ]
+            },
+            {
+                id: 2,
+                title: "UX/UI Designer",
+                company: "Creative Studios",
+                location: "New York, NY",
+                type: "full-time",
+                remote: true,
+                salary: "$95,000 - $120,000",
+                experience: "3-5 years",
+                education: "Bachelor's degree",
+                tags: ["Figma", "Adobe XD", "Prototyping"],
+                description: "Join our design team to create beautiful, intuitive user experiences for our digital products. You'll work closely with product managers and developers to bring ideas to life.",
+                responsibilities: [
+                    "Create wireframes, storyboards, user flows, process flows and site maps",
+                    "Develop UI mockups and prototypes that clearly illustrate how sites function and look",
+                    "Create original graphic designs (e.g., images, sketches and tables)",
+                    "Identify and troubleshoot UX problems"
+                ],
+                requirements: [
+                    "3+ years of UX/UI design experience",
+                    "Proficiency in Figma, Sketch, Adobe XD, or similar tools",
+                    "Ability to work with clients to understand detailed requirements and design complete user experiences",
+                    "Experience designing for web and mobile platforms",
+                    "Strong portfolio of design projects"
+                ],
+                benefits: [
+                    "Health, dental, and vision insurance",
+                    "401(k) with company match",
+                    "Flexible work schedule",
+                    "Professional development budget",
+                    "Annual company retreats"
+                ]
+            },
+            {
+                id: 3,
+                title: "Data Scientist",
+                company: "Analytics Pro",
+                location: "Seattle, WA",
+                type: "full-time",
+                remote: false,
+                salary: "$130,000 - $160,000",
+                experience: "4+ years",
+                education: "Master's degree",
+                tags: ["Python", "Machine Learning", "SQL"],
+                description: "We're seeking a Data Scientist to help us extract insights from large datasets and build predictive models. You'll work on challenging problems that directly impact our business.",
+                responsibilities: [
+                    "Apply statistical analysis and modeling techniques to solve business problems",
+                    "Develop and implement machine learning models",
+                    "Communicate findings and insights to stakeholders",
+                    "Collaborate with engineering teams to deploy models into production"
+                ],
+                requirements: [
+                    "Master's degree in Computer Science, Statistics, or related field",
+                    "4+ years of experience in data science or analytics",
+                    "Proficiency in Python and SQL",
+                    "Experience with machine learning frameworks",
+                    "Strong communication and presentation skills"
+                ],
+                benefits: [
+                    "Competitive compensation package",
+                    "Stock options",
+                    "Health, dental, and vision insurance",
+                    "Flexible work arrangements",
+                    "Education reimbursement"
+                ]
+            },
+            {
+                id: 4,
+                title: "Product Manager",
+                company: "InnovateTech",
+                location: "Austin, TX",
+                type: "full-time",
+                remote: true,
+                salary: "$110,000 - $140,000",
+                experience: "3-5 years",
+                education: "Bachelor's degree",
+                tags: ["Strategy", "Agile", "Analytics"],
+                description: "We're looking for a Product Manager to drive the development of our flagship product. You'll work with cross-functional teams to define product vision and strategy.",
+                responsibilities: [
+                    "Define product vision and strategy",
+                    "Create and maintain product roadmap",
+                    "Gather and prioritize product and customer requirements",
+                    "Work closely with engineering, sales, and marketing to ensure revenue and customer satisfaction goals are met"
+                ],
+                requirements: [
+                    "3+ years of product management experience",
+                    "Experience with Agile development methodologies",
+                    "Strong analytical and problem-solving skills",
+                    "Excellent communication and leadership abilities",
+                    "Technical background or experience with software development"
+                ],
+                benefits: [
+                    "Competitive salary and bonus structure",
+                    "Comprehensive benefits package",
+                    "Flexible work environment",
+                    "Professional development opportunities",
+                    "Company equity"
+                ]
+            },
+            {
+                id: 5,
+                title: "Backend Developer",
+                company: "Cloud Solutions",
+                location: "Denver, CO",
+                type: "contract",
+                remote: true,
+                salary: "$90,000 - $110,000",
+                experience: "3+ years",
+                education: "Bachelor's degree",
+                tags: ["Node.js", "MongoDB", "AWS"],
+                description: "Join our backend team to build scalable and reliable services. You'll work on designing and implementing APIs, database schemas, and cloud infrastructure.",
+                responsibilities: [
+                    "Design and develop RESTful APIs",
+                    "Implement database schemas and optimize queries",
+                    "Deploy and manage applications on cloud platforms",
+                    "Write clean, maintainable, and well-documented code"
+                ],
+                requirements: [
+                    "3+ years of backend development experience",
+                    "Proficiency in Node.js or similar backend technologies",
+                    "Experience with NoSQL databases like MongoDB",
+                    "Familiarity with cloud services (AWS, Azure, or GCP)",
+                    "Understanding of microservices architecture"
+                ],
+                benefits: [
+                    "Competitive hourly rate",
+                    "Flexible work schedule",
+                    "Remote work opportunity",
+                    "Professional development support",
+                    "Potential for contract extension"
+                ]
+            },
+            {
+                id: 6,
+                title: "Marketing Specialist",
+                company: "Growth Labs",
+                location: "Boston, MA",
+                type: "part-time",
+                remote: false,
+                salary: "$50,000 - $65,000",
+                experience: "2-3 years",
+                education: "Bachelor's degree",
+                tags: ["SEO", "Content", "Social Media"],
+                description: "We're seeking a creative Marketing Specialist to help us grow our brand and reach new audiences. You'll develop and execute marketing campaigns across multiple channels.",
+                responsibilities: [
+                    "Develop and implement marketing strategies",
+                    "Create engaging content for various platforms",
+                    "Manage social media accounts and campaigns",
+                    "Analyze marketing metrics and prepare reports"
+                ],
+                requirements: [
+                    "2+ years of marketing experience",
+                    "Strong writing and communication skills",
+                    "Experience with digital marketing tools and platforms",
+                    "Knowledge of SEO best practices",
+                    "Creative thinking and problem-solving abilities"
+                ],
+                benefits: [
+                    "Flexible work hours",
+                    "Health insurance",
+                    "Professional development opportunities",
+                    "Creative work environment",
+                    "Company events and outings"
+                ]
+            }
+        ];
+
+        // DOM elements
+        const jobsGrid = document.getElementById('jobsGrid');
+        const jobModal = document.getElementById('jobModal');
+        const closeModal = document.getElementById('closeModal');
+        const applyBtn = document.getElementById('applyBtn');
+        const notification = document.getElementById('notification');
+
+        // Current job being displayed in modal
+        let currentJob = null;
+
+        // Applied jobs tracking
+        const appliedJobs = new Set();
+
+        // Initialize the page
+        function init() {
+            renderJobCards();
+            setupEventListeners();
+        }
+
+        // Render job cards
+        function renderJobCards() {
+            jobsGrid.innerHTML = '';
+            
+            jobsData.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                
+                const typeClass = job.type.replace('-', '-');
+                const isApplied = appliedJobs.has(job.id);
+                
+                jobCard.innerHTML = `
+                    <div class="job-card-header">
+                        <div class="company-info">
+                            <div class="company-logo">${job.company.substring(0, 2).toUpperCase()}</div>
+                            <div class="company-details">
+                                <h3>${job.title}</h3>
+                                <div class="company-name">${job.company}</div>
+                            </div>
+                        </div>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${job.location}
+                        </div>
+                        <div class="job-tags">
+                            ${job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="job-type ${typeClass}">${job.type.replace('-', ' ')}</div>
+                    </div>
+                    <div class="job-card-footer">
+                        <div class="salary">${job.salary}</div>
+                        <button class="view-details-btn" data-job-id="${job.id}">View Details</button>
+                    </div>
+                `;
+                
+                jobsGrid.appendChild(jobCard);
+            });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const jobId = parseInt(e.target.getAttribute('data-job-id'));
+                    openJobModal(jobId);
+                });
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            closeModal.addEventListener('click', closeJobModal);
+            
+            // Close modal when clicking outside
+            jobModal.addEventListener('click', (e) => {
+                if (e.target === jobModal) {
+                    closeJobModal();
+                }
+            });
+            
+            // Apply button
+            applyBtn.addEventListener('click', handleApply);
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    // In a real app, this would filter the jobs
+                });
+            });
+        }
+
+        // Open job modal
+        function openJobModal(jobId) {
+            currentJob = jobsData.find(job => job.id === jobId);
+            
+            if (!currentJob) return;
+            
+            // Populate modal with job details
+            document.getElementById('modalCompanyLogo').textContent = currentJob.company.substring(0, 2).toUpperCase();
+            document.getElementById('modalJobTitle').textContent = currentJob.title;
+            document.getElementById('modalCompanyName').textContent = currentJob.company;
+            document.getElementById('modalLocation').textContent = currentJob.location;
+            document.getElementById('modalType').textContent = currentJob.type.replace('-', ' ');
+            document.getElementById('modalExperience').textContent = currentJob.experience;
+            document.getElementById('modalEducation').textContent = currentJob.education;
+            document.getElementById('modalDescription').textContent = currentJob.description;
+            document.getElementById('modalSalary').textContent = currentJob.salary;
+            
+            // Populate lists
+            populateList('modalResponsibilities', currentJob.responsibilities);
+            populateList('modalRequirements', currentJob.requirements);
+            populateList('modalBenefits', currentJob.benefits);
+            
+            // Update apply button state
+            if (appliedJobs.has(currentJob.id)) {
+                applyBtn.classList.add('applied');
+                applyBtn.innerHTML = '<i class="fas fa-check"></i> Applied';
+            } else {
+                applyBtn.classList.remove('applied');
+                applyBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Apply Now';
+            }
+            
+            // Show modal
+            jobModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close job modal
+        function closeJobModal() {
+            jobModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Populate list in modal
+        function populateList(elementId, items) {
+            const listElement = document.getElementById(elementId);
+            listElement.innerHTML = '';
+            
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                listElement.appendChild(li);
+            });
+        }
+
+        // Handle apply button click
+        function handleApply() {
+            if (!currentJob || appliedJobs.has(currentJob.id)) return;
+            
+            // Mark job as applied
+            appliedJobs.add(currentJob.id);
+            
+            // Update button state
+            applyBtn.classList.add('applied');
+            applyBtn.innerHTML = '<i class="fas fa-check"></i> Applied';
+            
+            // Show notification
+            showNotification();
+            
+            // Update the job card
+            renderJobCards();
+        }
+
+        // Show notification
+        function showNotification() {
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

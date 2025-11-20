@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interview Cancelled | RecruitWay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .cancellation-card {
+            background-color: #fef0f0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .cancellation-card h3 {
+            margin-top: 0;
+            color: #c0392b;
+        }
+
+        .next-steps {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            background: #f5f7fa;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        .company-info {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .signature {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Interview Cancellation Notice</h1>
+        </div>
+
+        <div class="content">
+            <p class="greeting">Dear <strong>
+                    <%= interviewerName %>
+                </strong>,</p>
+
+            <p>We regret to inform you that the following interview has been <strong>cancelled</strong>:</p>
+
+            <div class="cancellation-card">
+                <h3>Cancelled Interview Details</h3>
+                <p><strong>Candidate:</strong>
+                    <%= candidateName %>
+                </p>
+                <p><strong>Position:</strong>
+                    <%= jobTitle %>
+                </p>
+                <p><strong>Scheduled Date:</strong>
+                    <%= date %>
+                </p>
+                <p><strong>Scheduled Time:</strong>
+                    <%= time %> - <%= endTime %>
+                </p>
+                <p><strong>Location/Medium:</strong>
+                    <%= location %>
+                </p>
+                <p><strong>Reason:</strong> Candidate-initiated cancellation</p>
+            </div>
+
+            <div class="next-steps">
+                <p><strong>Next Steps:</strong></p>
+                <ul>
+                    <li>This time slot has been freed up in your calendar</li>
+                    <li>Our team will reach out if rescheduling is needed</li>
+                    <li>Contact <a href="mailto:scheduling@recruitway.com">scheduling@recruitway.com</a> with any
+                        questions</li>
+                </ul>
+            </div>
+
+            <div class="signature">
+                <p>We appreciate your understanding,<br>
+                    <strong>RecruitWay Scheduling Team</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://linkedin.com/company/recruitway">LinkedIn</a> |
+                <a href="https://twitter.com/recruitway">Twitter</a> |
+                <a href="https://facebook.com/recruitway">Facebook</a>
+            </div>
+            <div class="company-info">
+                <p>
+                    RecruitWay Inc.<br>
+                    123 Business Avenue, Suite 100<br>
+                    San Francisco, CA 94107
+                </p>
+            </div>
+            <p>This is an automated message. Please do not reply directly to this email.</p>
+        </div>
+    </div>
+</body>
+
+</html>

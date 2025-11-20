@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Interview Updated | RecruitWay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .update-notice {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+            font-weight: 500;
+        }
+
+        .details-card {
+            background-color: #f0f8ff;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2575fc;
+        }
+
+        .details-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .details-card p {
+            margin: 10px 0;
+        }
+
+        .interview-link {
+            word-break: break-all;
+            color: #2575fc;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .interview-link:hover {
+            text-decoration: underline;
+        }
+
+        .preparation-tips {
+            background-color: #fffaf0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+            border-left: 4px solid #ffb347;
+        }
+
+        .preparation-tips ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .preparation-tips li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            background: #f5f7fa;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #2575fc;
+        }
+
+        .company-info {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .signature {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2575fc;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            margin: 15px 0;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            background: #e8f4ff;
+            color: #2575fc;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin: 5px 0;
+            font-weight: 500;
+        }
+
+        .changes-highlight {
+            background-color: #e8f5e8;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid #28a745;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Your Mock Interview Has Been Updated</h1>
+        </div>
+
+        <div class="content">
+            <p class="greeting">Dear <strong>
+                    <%= candidateName %>
+                </strong>,</p>
+
+            <div class="update-notice">
+                ⚠️ Important: Your mock interview details have been updated. Please review the new information below.
+            </div>
+
+            <p>We've made some changes to your upcoming mock interview with RecruitWay. Here are the updated details:</p>
+
+            <div class="details-card">
+                <h3>Updated Interview Details</h3>
+                <p><strong>Candidate:</strong>
+                    <%= candidateName %>
+                </p>
+                <p><strong>Technical Profile:</strong> <span class="profile-badge">
+                        <%= profile %>
+                    </span></p>
+                <p><strong>Interviewer:</strong>
+                    <%= interviewerName %>
+                </p>
+                <p><strong>New Date:</strong>
+                    <%= date %>
+                </p>
+                <p><strong>New Time:</strong>
+                    <%= newTime %> - <%= endTime %>
+                </p>
+                <p><strong>Interview Link:</strong><br>
+                    <a href="<%= interviewUrl %>" class="interview-link">"<%= interviewUrl %>"</a>
+                </p>
+                <% if (notes && notes !== 'None provided') { %>
+                    <p><strong>Additional Notes:</strong><br>
+                        <%= notes %>
+                    </p>
+                <% } %>
+            </div>
+
+            <center>
+                <a href="<%= interviewUrl %>" class="button">Join Mock Interview</a>
+            </center>
+
+            <div class="changes-highlight">
+                <p><strong>What's changed?</strong><br>
+                Your interview timing and/or details have been modified. Please make note of the new schedule to ensure you don't miss your session.</p>
+            </div>
+
+            <div class="preparation-tips">
+                <p><strong>Preparation Tips for Your Mock Interview:</strong></p>
+                <ul>
+                    <li>Review common interview questions for <%= profile %> positions</li>
+                    <li>Prepare examples of your work or projects that demonstrate your skills</li>
+                    <li>Test your technology (camera, microphone, and internet connection) beforehand</li>
+                    <li>Have your resume and any relevant materials ready for reference</li>
+                    <li>Prepare questions to ask about the role and interview process</li>
+                    <li>Plan to join 5-10 minutes early to ensure everything is working properly</li>
+                </ul>
+            </div>
+
+            <p>This mock interview is designed to help you practice and receive constructive feedback. We encourage you
+                to treat it as a real interview to get the most benefit from the experience.</p>
+
+            <p>If you have any questions or need to request further changes, please contact us at <a
+                    href="mailto:support@recruitway.com">support@recruitway.com</a>.</p>
+
+            <div class="signature">
+                <p>Best regards,<br>
+                    <strong>RecruitWay Mock Interview Team</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://linkedin.com/company/recruitway">LinkedIn</a> |
+                <a href="https://twitter.com/recruitway">Twitter</a> |
+                <a href="https://facebook.com/recruitway">Facebook</a>
+            </div>
+            <div class="company-info">
+                <p>
+                    RecruitWay Inc.<br>
+                    123 Business Avenue, Suite 100<br>
+                    San Francisco, CA 94107
+                </p>
+            </div>
+            <p>This is an automated message. Please do not reply directly to this email.</p>
+        </div>
+    </div>
+</body>
+
+</html>

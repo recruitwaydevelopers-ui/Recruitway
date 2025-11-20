@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Report</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Typography */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        small {
+            font-size: 0.875em;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-md-6 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 0.75em;
+            font-weight: 600;
+            border-radius: 30px;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+        }
+
+        .bg-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .bg-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .bg-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .bg-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Progress */
+        .progress {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #28a745;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        /* Tables */
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        .table-borderless td {
+            border: 0;
+            padding: 0.5rem 0;
+        }
+
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        /* Lists */
+        .list-group {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 0.75rem 1.25rem;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+
+        .list-group-flush .list-group-item {
+            border-width: 0 0 1px;
+            border-radius: 0;
+        }
+
+        .list-group-flush .list-group-item:last-child {
+            border-bottom-width: 0;
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .text-dark {
+            color: #343a40;
+        }
+
+        .text-success {
+            color: #28a745;
+        }
+
+        .text-warning {
+            color: #ffc107;
+        }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .text-gray-800 {
+            color: #5a5c69;
+        }
+
+        .text-break {
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .fw-bold {
+            font-weight: 600;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem;
+        }
+
+        .me-2 {
+            margin-right: 0.5rem;
+        }
+
+        .me-3 {
+            margin-right: 1rem;
+        }
+
+        .px-0 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .px-3 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .px-md-4 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .py-3 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .h-100 {
+            height: 100%;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-md-row {
+            flex-direction: row;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .rounded-circle {
+            border-radius: 50%;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .border-start {
+            border-left: 3px solid;
+        }
+
+        .border-success {
+            border-color: #28a745;
+        }
+
+        .border-warning {
+            border-color: #ffc107;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-3 {
+            gap: 1rem;
+        }
+
+        /* Header Section */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Interviewer/Candidate Cards */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid #f0f0f0;
+        }
+
+        .profile-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #6c757d;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .profile-title {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Skills Assessment */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+        }
+
+        .skill-score {
+            font-weight: 500;
+        }
+
+        /* Code Evaluation */
+        .evaluation-section {
+            margin-bottom: 15px;
+        }
+
+        .evaluation-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .evaluation-title i {
+            margin-right: 8px;
+        }
+
+        .evaluation-item {
+            padding-left: 15px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .evaluation-item i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Icons */
+        .bi {
+            display: inline-block;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #6c757d;
+            padding: 20px;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 13px;
+                padding: 10px 0;
+            }
+            
+            .header-section {
+                padding: 15px;
+            }
+            
+            .header-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-header {
+                padding: 12px 15px;
+            }
+            
+            .card-body {
+                padding: 15px;
+            }
+            
+            .profile-img, .profile-placeholder {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid px-3 px-md-4">
+        <div class="container m-0">
+            <!-- Header Section -->
+            <div class="header-section">
+                <div>
+                    <h1 class="header-title">Interview Detailed Report</h1>
+                    <p class="header-subtitle">Comprehensive analysis of interview performance</p>
+                </div>
+                <div class="d-flex flex-wrap gap-2 justify-content-center mt-3 mt-md-0">
+                    <p class="text-white mb-0"><%= reportData.interviewId %></p>
+                </div>
+            </div>
+
+            <div id="print-area" class="main">
+                <!-- Interview Overview Card -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center flex-column flex-md-row">
+                        <h5 class="mb-2 mb-md-0">Interview Overview</h5>
+                        <span class="badge bg-<%= reportData.overallRecommendation.includes('Recommended') ? 'success' : 'warning' %> fs-6">
+                            <%= reportData.overallRecommendation %>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Interview ID</td>
+                                            <td class="small"><%= reportData.interviewId %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Candidate</td>
+                                            <td class="small"><%= reportData.candidateName %> (<%= reportData.candidateEmail %>)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Position</td>
+                                            <td class="small"><%= reportData.profile %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Interview Type</td>
+                                            <td class="small text-capitalize"><%= reportData.interviewType %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Date & Time</td>
+                                            <td class="small"><%= new Date(reportData.interviewDate).toLocaleString() %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Duration</td>
+                                            <td class="small"><%= reportData.duration %> minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Questions</td>
+                                            <td class="small"><%= reportData.questionsAnswered %>/<%= reportData.totalQuestions %> answered</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted fw-bold small">Overall Score</td>
+                                            <td class="small">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="progress me-2" style="width: 100px;">
+                                                        <div class="progress-bar" role="progressbar" style="width: <%= reportData.overallScore * 10 %>%" aria-valuenow="<%= reportData.overallScore * 10 %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span><%= reportData.overallScore %>/10</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <!-- Interviewer Information -->
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0 d-flex align-items-center">
+                                    <span class="small">Interviewer Information</span>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-card">
+                                    <img src="<%= reportData?.interviewerProfile?.profilePicture %>" alt="Interviewer" class="profile-img">
+                                    <div>
+                                        <h6 class="profile-name small"><%= reportData?.interviewerProfile?.fullname %></h6>
+                                        <small class="profile-title"><%= reportData?.interviewerProfile?.headline %></small>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Experience:</span>
+                                            <span><%= reportData?.interviewerProfile?.yearsOfExperience %> years</span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Location:</span>
+                                            <span><%= reportData?.interviewerProfile?.location %></span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Email:</span>
+                                            <span class="text-break"><%= reportData?.interviewerProfile?.email %></span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between">
+                                            <span class="text-muted">Domains:</span>
+                                            <span class="text-md-end mt-1 mt-md-0">
+                                                <% reportData?.interviewerProfile?.interviewDomains?.forEach(function(domain) { %>
+                                                    <%= domain.domain %><% if (domain.index < reportData.interviewerProfile.interviewDomains.length - 1) { %>, <% } %>
+                                                <% }); %>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Candidate Information -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0 d-flex align-items-center">
+                                    <span class="small">Candidate Information</span>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-card">
+                                    <div class="profile-placeholder">
+                                        <span style="font-size: 1.5rem;">👤</span>
+                                    </div>
+                                    <div>
+                                        <h6 class="profile-name small"><%= reportData?.candidateName %></h6>
+                                        <small class="profile-title"><%= reportData?.candidateEmail %></small>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Position:</span>
+                                            <span><%= reportData?.profile %></span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Interview Date:</span>
+                                            <span><%= new Date(reportData?.interviewDate).toLocaleDateString() %></span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Interview Type:</span>
+                                            <span class="text-capitalize"><%= reportData?.interviewType %></span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-muted">Overall Score:</span>
+                                            <span class="badge bg-<%= reportData.overallScore >= 7 ? 'success' : reportData.overallScore >= 5 ? 'warning' : 'danger' %> fs-6">
+                                                <%= reportData?.overallScore %>/10
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Assessment -->
+                <% if(reportData.skills && reportData.skills.length > 0) { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Skills Assessment</h5>
+                    </div>
+                    <div class="card-body">
+                        <% reportData.skills.forEach(function(skill, index) { %>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name small"><%= skill.name %></span>
+                                <span class="skill-score small"><%= skill.score %>/10 (<%= skill.percentage %>%)</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: <%= skill.percentage %>%" aria-valuenow="<%= skill.percentage %>"  aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+                <% } else { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Skills Assessment</h5>
+                    </div>
+                    <div class="card-body text-center text-muted py-3">
+                        <p style="font-size: 2rem; margin-bottom: 10px;">⚠️</p>
+                        <p class="small">No skills assessment data available</p>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- Code Evaluation -->
+                <% if(reportData.codeEvaluation && reportData.codeEvaluation.length > 0) { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Code Evaluation</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="evaluation-section">
+                                    <h6 class="evaluation-title text-success small">
+                                        <span style="margin-right: 8px;">✅</span> Positive Points
+                                    </h6>
+                                    <% reportData.codeEvaluation.filter(item => item.type === 'positive').forEach(function(item, index) { %>
+                                    <div class="evaluation-item border-start border-success">
+                                        <% item.points.forEach(function(point, i) { %>
+                                        <div class="mb-1 small">
+                                            <%= point %>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="evaluation-section">
+                                    <h6 class="evaluation-title text-warning small">
+                                        <span style="margin-right: 8px;">⚠️</span> Areas for Improvement
+                                    </h6>
+                                    <% reportData.codeEvaluation.filter(item => item.type === 'improvement').forEach(function(item, index) { %>
+                                    <div class="evaluation-item border-start border-warning">
+                                        <% item.points.forEach(function(point, i) { %>
+                                        <div class="mb-1 small">
+                                            <%= point %>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } else { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Code Evaluation</h5>
+                    </div>
+                    <div class="card-body text-center text-muted py-3">
+                        <p style="font-size: 2rem; margin-bottom: 10px;">⚠️</p>
+                        <p class="small">No code evaluation data available</p>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- Detailed Feedback -->
+                <% if(reportData.feedback) { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Detailed Feedback</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <h6 class="mb-3 small">Technical Skills</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <% if(reportData.feedback.technicalSkills && reportData.feedback.technicalSkills.length > 0) { %>
+                                        <% reportData.feedback.technicalSkills.forEach(function(skill, index) { %>
+                                        <li class="list-group-item px-0">
+                                            <% if(skill.includes('Lacks') || skill.includes('Weak')) { %>
+                                                <span style="color: #dc3545; margin-right: 8px;">✗</span><%= skill %>
+                                            <% } else { %>
+                                                <span style="color: #28a745; margin-right: 8px;">✓</span><%= skill %>
+                                            <% } %>
+                                        </li>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <li class="list-group-item px-0 text-muted">No technical skills feedback available</li>
+                                    <% } %>
+                                </ul>
+                                
+                                <h6 class="mb-3 mt-4 small">Communication Skills</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <% if(reportData.feedback.communicationSkills && reportData.feedback.communicationSkills.length > 0) { %>
+                                        <% reportData.feedback.communicationSkills.forEach(function(skill, index) { %>
+                                        <li class="list-group-item px-0">
+                                            <% if(skill.includes('Lacks') || skill.includes('Hesitant')) { %>
+                                                <span style="color: #dc3545; margin-right: 8px;">✗</span><%= skill %>
+                                            <% } else { %>
+                                                <span style="color: #28a745; margin-right: 8px;">✓</span><%= skill %>
+                                            <% } %>
+                                        </li>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <li class="list-group-item px-0 text-muted">No communication skills feedback available</li>
+                                    <% } %>
+                                </ul>
+                                <% if(reportData.feedback.communicationRating) { %>
+                                <div class="mt-2">
+                                    <span class="fw-bold me-2 small">Rating:</span>
+                                    <span class="badge bg-<%= reportData.feedback.communicationRating >= 4 ? 'success' : reportData.feedback.communicationRating >= 3 ? 'warning' : 'danger' %>">
+                                        <%= reportData.feedback.communicationRating %>/5
+                                    </span>
+                                </div>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-3 small">Behavioral Skills</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <% if(reportData.feedback.behavioralSkills && reportData.feedback.behavioralSkills.length > 0) { %>
+                                        <% reportData.feedback.behavioralSkills.forEach(function(skill, index) { %>
+                                        <li class="list-group-item px-0">
+                                            <% if(skill.includes('Lacks') || skill.includes('Lacked')) { %>
+                                                <span style="color: #dc3545; margin-right: 8px;">✗</span><%= skill %>
+                                            <% } else { %>
+                                                <span style="color: #28a745; margin-right: 8px;">✓</span><%= skill %>
+                                            <% } %>
+                                        </li>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <li class="list-group-item px-0 text-muted">No behavioral skills feedback available</li>
+                                    <% } %>
+                                </ul>
+                                <% if(reportData.feedback.behavioralRating) { %>
+                                <div class="mt-2">
+                                    <span class="fw-bold me-2 small">Rating:</span>
+                                    <span class="badge bg-<%= reportData.feedback.behavioralRating >= 4 ? 'success' : reportData.feedback.behavioralRating >= 3 ? 'warning' : 'danger' %>">
+                                        <%= reportData.feedback.behavioralRating %>/5
+                                    </span>
+                                </div>
+                                <% } %>
+                                
+                                <h6 class="mb-3 mt-4 small">Job Specific Competencies</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <% if(reportData.feedback.jobSpecificCompetencies && reportData.feedback.jobSpecificCompetencies.length > 0) { %>
+                                        <% reportData.feedback.jobSpecificCompetencies.forEach(function(skill, index) { %>
+                                        <li class="list-group-item px-0">
+                                            <% if(skill.includes('Lacks')) { %>
+                                                <span style="color: #dc3545; margin-right: 8px;">✗</span><%= skill %>
+                                            <% } else { %>
+                                                <span style="color: #28a745; margin-right: 8px;">✓</span><%= skill %>
+                                            <% } %>
+                                        </li>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <li class="list-group-item px-0 text-muted">No job specific competencies feedback available</li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- Interviewer Summary -->
+                <% if(reportData.interviewerSummary) { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Interviewer Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="small"><%= reportData.interviewerSummary %></p>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- Video Link -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 small">Recording Link</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="<%= process.env.FIRST_FRONTEND_URL %>/recording-video/<%= encodeURIComponent(reportData.url.key) %>" class="small" style="color: #007bff; text-decoration: none; display: block; text-align: center; padding: 10px; background-color: #f0f7ff; border-radius: 5px; transition: background-color 0.3s;">
+                            <%= reportData.url.key %>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    <p class="mb-0">Report generated on <%= new Date().toLocaleString() %></p>
+                    <p class="mb-0">Interview ID: <%= reportData.interviewId %> | Submitted: <%= new Date(reportData.submittedAt).toLocaleString() %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

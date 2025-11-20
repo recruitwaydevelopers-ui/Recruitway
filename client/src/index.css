@@ -1,0 +1,328 @@
+/*  */
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #230cee;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lds-ripple {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ripple img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* For User Jobs  */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hover-shadow {
+  transition: box-shadow 0.2s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+
+
+
+/* for customizer */
+
+/* Active state for selected options */
+.active-theme {
+  border: 2px solid var(--bs-primary) !important;
+  background-color: rgba(var(--bs-primary-rgb), 0.1) !important;
+}
+
+/* Hover effects */
+.customizer-box {
+  transition: all 0.3s ease;
+  border: 1px solid var(--bs-border-color);
+}
+
+.customizer-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Color selector buttons */
+.customizer-bgcolor {
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+}
+
+.customizer-bgcolor:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* For superadmin Print report of mock and normal */
+
+@media print {
+  body * {
+    visibility: hidden; /* hide everything by default */
+  }
+
+  #print-area, #print-area * {
+    visibility: visible; /* show only report area */
+  }
+
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Hide elements you don't want to print */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure cards don’t break across pages */
+  .card {
+    page-break-inside: avoid;
+  }
+
+  /* Force page breaks before certain sections if needed */
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Optional: style the printed header/footer */
+  .print-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 20px;
+  }
+}
+
+@media print {
+  thead { display: table-header-group; }  /* repeats table headers */
+  tfoot { display: table-footer-group; }  /* repeats table footers */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* for interview transcription  */
+
+.transcription-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background-color: #1e1e1e;
+    border-left: 1px solid #333;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 1050;
+    color: #e0e0e0;
+}
+
+.transcription-panel.visible {
+    right: 0;
+}
+
+.transcription-header {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    background-color: #252526;
+}
+
+.transcription-controls {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    background-color: #252526;
+}
+
+.language-selector {
+    margin-top: 0.5rem;
+}
+
+.language-selector .form-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    color: #8b949e;
+}
+
+.transcription-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #8b949e;
+}
+
+.transcription-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.transcription-entry {
+    padding: 0.75rem;
+    border-radius: 6px;
+    background-color: #2d2d2d;
+}
+
+.transcription-entry.interviewer {
+    border-left: 3px solid #58a6ff;
+}
+
+.transcription-entry.candidate {
+    border-left: 3px solid #3fb950;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.speaker-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.interviewer .speaker-badge {
+    background-color: rgba(88, 166, 255, 0.2);
+    color: #58a6ff;
+}
+
+.candidate .speaker-badge {
+    background-color: rgba(63, 185, 80, 0.2);
+    color: #3fb950;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: #8b949e;
+}
+
+.entry-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.transcription-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #333;
+    background-color: #252526;
+    display: flex;
+    align-items: center;
+}
+
+.recording-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f85149;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .transcription-panel {
+        width: 100%;
+        right: -100%;
+    }
+}

@@ -248,7 +248,7 @@ const SuperAdminNewBlogCreator = () => {
                                         src={thumbnailPreview}
                                         alt="Thumbnail preview"
                                         className="img-fluid rounded w-100"
-                                        style={{ maxHeight: "300px", objectFit: "cover" }}
+                                        style={{ maxHeight: "300px", objectFit: "contain" }}
                                     />
                                 </div>
                                 <button

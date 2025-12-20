@@ -80,93 +80,222 @@ const InterviewerProfileCompletion = () => {
     // Safely get entries from details object
     const detailEntries = completion.details ? Object.entries(completion.details) : [];
 
+    // return (
+    //     <div className="card shadow-sm mb-4 border-0" style={{ borderRadius: '12px', border: '1px solid #e0e0e0' }}>
+    //         <div className="card-body p-4">
+    //             <div className="row align-items-center">
+    //                 <div className="col-md-4 text-center mb-4 mb-md-0">
+    //                     <div style={{ width: 140, height: 140, margin: '0 auto' }}>
+    //                         <CircularProgressbar
+    //                             value={completion.percentage}
+    //                             text={`${completion.percentage}%`}
+    //                             styles={buildStyles({
+    //                                 textColor: '#2e3a59',
+    //                                 trailColor: '#f8f9fa',
+    //                                 textSize: '20px',
+    //                                 pathTransitionDuration: 1,
+    //                                 pathColor: getSmoothProgressColor(completion.percentage),
+    //                                 // pathColor: getProgressColor(completion.percentage),
+    //                             })}
+    //                         />
+    //                     </div>
+    //                     <div className="mt-3">
+    //                         <span className={`badge ${completion.percentage === 100 ? 'bg-success' : 'bg-primary'} py-2 px-3`}>
+    //                             {completion.percentage === 100 ? 'Profile Complete' : 'Completion In Progress'}
+    //                         </span>
+    //                     </div>
+    //                 </div>
+    //                 <div className="col-md-8">
+    //                     <h4 className="card-title fw-semibold text-dark mb-3">Profile Completion Status</h4>
+    //                     <p className="text-muted mb-3">
+    //                         {getCompletionMessage(completion.percentage)}
+    //                     </p>
+
+    //                     <div className="progress mb-4" style={{ height: '8px', borderRadius: '4px' }}>
+    //                         <div
+    //                             className={`progress-bar ${completion.percentage === 100 ? 'bg-success' : 'bg-gradient-primary'}`}
+    //                             role="progressbar"
+    //                             style={{ width: `${completion.percentage}%`, borderRadius: '4px' }}
+    //                             aria-valuenow={completion.percentage}
+    //                             aria-valuemin="0"
+    //                             aria-valuemax="100"
+    //                         ></div>
+    //                     </div>
+
+    //                     {detailEntries.length > 0 ? (
+    //                         <div className="row g-3">
+    //                             {detailEntries.map(([field, value]) => {
+    //                                 const status = getFieldStatus(value);
+    //                                 return (
+    //                                     <div key={field} className="col-md-6">
+    //                                         <div className="d-flex align-items-center">
+    //                                             <i className={`fas fa-${status.icon} me-2 ${status.class}`}></i>
+    //                                             <span className="text-dark small">{field}</span>
+    //                                             <span className="ms-auto fw-semibold" style={{ color: '#4e73df' }}>
+    //                                                 {value} pts
+    //                                             </span>
+    //                                         </div>
+    //                                     </div>
+    //                                 );
+    //                             })}
+    //                         </div>
+    //                     ) : (
+    //                         <div className="alert alert-info mb-4">
+    //                             <i className="fas fa-info-circle me-2"></i>
+    //                             No profile completion details available.
+    //                         </div>
+    //                     )}
+
+    //                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mt-4">
+    //                         {completion.percentage !== 100 && (
+    //                             <Link
+    //                                 to="/interviewer/profile"
+    //                                 className="btn btn-primary px-4 py-2 mb-3 mb-md-0"
+    //                                 style={{ borderRadius: '6px' }}
+    //                             >
+    //                                 <i className="fas fa-user-edit me-2"></i>
+    //                                 Complete Your Profile
+    //                             </Link>
+    //                         )}
+
+    //                         {completion.missingFields && completion.missingFields.length > 0 && (
+    //                             <div className="text-md-end">
+    //                                 <small className="text-muted d-block mb-1">Recommended sections to complete:</small>
+    //                                 <div className="d-flex flex-wrap gap-2 justify-content-md-end">
+    //                                     {completion.missingFields.map((section, index) => (
+    //                                         <span
+    //                                             key={index}
+    //                                             className="badge bg-light text-dark border px-3 py-1"
+    //                                             style={{ borderRadius: '12px', fontSize: '0.75rem' }}
+    //                                         >
+    //                                             {section}
+    //                                         </span>
+    //                                     ))}
+    //                                 </div>
+    //                             </div>
+    //                         )}
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // );
+
+
+
     return (
-        <div className="card shadow-sm mb-4 border-0" style={{ borderRadius: '12px', border: '1px solid #e0e0e0' }}>
-            <div className="card-body p-4">
-                <div className="row align-items-center">
-                    <div className="col-md-4 text-center mb-4 mb-md-0">
-                        <div style={{ width: 140, height: 140, margin: '0 auto' }}>
-                            <CircularProgressbar
-                                value={completion.percentage}
-                                text={`${completion.percentage}%`}
-                                styles={buildStyles({
-                                    textColor: '#2e3a59',
-                                    trailColor: '#f8f9fa',
-                                    textSize: '20px',
-                                    pathTransitionDuration: 1,
-                                    pathColor: getSmoothProgressColor(completion.percentage),
-                                    // pathColor: getProgressColor(completion.percentage),
-                                })}
-                            />
-                        </div>
-                        <div className="mt-3">
-                            <span className={`badge ${completion.percentage === 100 ? 'bg-success' : 'bg-primary'} py-2 px-3`}>
-                                {completion.percentage === 100 ? 'Profile Complete' : 'Completion In Progress'}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="col-md-8">
-                        <h4 className="card-title fw-semibold text-dark mb-3">Profile Completion Status</h4>
-                        <p className="text-muted mb-3">
-                            {getCompletionMessage(completion.percentage)}
-                        </p>
+        <div className="container-fluid px-4">
+            {/* Header */}
+            <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 className="h3 mb-0 fw-bold text-primary">
+                    <i className="fas fa-user-check me-2"></i> Profile Completion Overview
+                </h1>
+            </div>
 
-                        <div className="progress mb-4" style={{ height: '8px', borderRadius: '4px' }}>
-                            <div
-                                className={`progress-bar ${completion.percentage === 100 ? 'bg-success' : 'bg-gradient-primary'}`}
-                                role="progressbar"
-                                style={{ width: `${completion.percentage}%`, borderRadius: '4px' }}
-                                aria-valuenow={completion.percentage}
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            ></div>
-                        </div>
+            {/* Main Card */}
+            <div className="card border-0 shadow-sm rounded-4 hover-card">
+                <div
+                    className="card-header text-white rounded-top-4"
+                    style={{ background: "linear-gradient(90deg, #4e73df, #36b9cc)" }}
+                >
+                    <h6 className="m-0 fw-semibold">Completion Summary</h6>
+                </div>
 
-                        {detailEntries.length > 0 ? (
-                            <div className="row g-3">
-                                {detailEntries.map(([field, value]) => {
-                                    const status = getFieldStatus(value);
-                                    return (
-                                        <div key={field} className="col-md-6">
-                                            <div className="d-flex align-items-center">
-                                                <i className={`fas fa-${status.icon} me-2 ${status.class}`}></i>
-                                                <span className="text-dark small">{field}</span>
-                                                <span className="ms-auto fw-semibold" style={{ color: '#4e73df' }}>
-                                                    {value} pts
-                                                </span>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                <div className="card-body p-4">
+                    <div className="row align-items-center">
+                        {/* Progress Circle */}
+                        <div className="col-md-4 text-center mb-4 mb-md-0">
+                            <div style={{ width: 160, height: 160, margin: "0 auto" }}>
+                                <CircularProgressbar
+                                    value={completion.percentage}
+                                    text={`${completion.percentage}%`}
+                                    styles={buildStyles({
+                                        textColor: "#1f2937",
+                                        trailColor: "#f3f4f6",
+                                        textSize: "20px",
+                                        pathTransitionDuration: 1,
+                                        pathColor: getSmoothProgressColor(completion.percentage),
+                                    })}
+                                />
                             </div>
-                        ) : (
-                            <div className="alert alert-info mb-4">
-                                <i className="fas fa-info-circle me-2"></i>
-                                No profile completion details available.
-                            </div>
-                        )}
-
-                        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mt-4">
-                            {completion.percentage !== 100 && (
-                                <Link
-                                    to="/interviewer/profile"
-                                    className="btn btn-primary px-4 py-2 mb-3 mb-md-0"
-                                    style={{ borderRadius: '6px' }}
+                            <div className="mt-3">
+                                <span
+                                    className={`badge ${completion.percentage === 100 ? "bg-success" : "bg-primary"
+                                        } px-3 py-2`}
                                 >
-                                    <i className="fas fa-user-edit me-2"></i>
-                                    Complete Your Profile
-                                </Link>
+                                    {completion.percentage === 100
+                                        ? "Profile Complete"
+                                        : "Completion In Progress"}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Completion Details */}
+                        <div className="col-md-8">
+                            <h5 className="fw-semibold mb-3 text-dark">
+                                Profile Completion Status
+                            </h5>
+                            <p className="text-muted mb-3">
+                                {getCompletionMessage(completion.percentage)}
+                            </p>
+
+                            <div
+                                className="progress mb-4"
+                                style={{ height: "8px", borderRadius: "6px" }}
+                            >
+                                <div
+                                    className={`progress-bar ${completion.percentage === 100 ? "bg-success" : "bg-info"
+                                        }`}
+                                    style={{ width: `${completion.percentage}%` }}
+                                    role="progressbar"
+                                ></div>
+                            </div>
+
+                            {/* Detailed Breakdown */}
+                            {detailEntries.length ? (
+                                <div className="row g-3">
+                                    {detailEntries.map(([field, value]) => {
+                                        const status = getFieldStatus(value);
+                                        return (
+                                            <div key={field} className="col-md-6">
+                                                <div className="d-flex align-items-center p-2 border rounded-3 bg-light">
+                                                    <i
+                                                        className={`fas fa-${status.icon} me-2 ${status.class}`}
+                                                    ></i>
+                                                    <span className="text-dark small">{field}</span>
+                                                    <span
+                                                        className="ms-auto fw-semibold"
+                                                        style={{ color: "#4e73df" }}
+                                                    >
+                                                        {value} pts
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <div className="alert alert-info">
+                                    <i className="fas fa-info-circle me-2"></i>No details
+                                    available.
+                                </div>
                             )}
 
-                            {completion.missingFields && completion.missingFields.length > 0 && (
-                                <div className="text-md-end">
-                                    <small className="text-muted d-block mb-1">Recommended sections to complete:</small>
-                                    <div className="d-flex flex-wrap gap-2 justify-content-md-end">
+                            {/* Missing Fields */}
+                            {completion.missingFields.length > 0 && (
+                                <div className="mt-4">
+                                    <small className="text-muted d-block mb-1">
+                                        Recommended sections to complete:
+                                    </small>
+                                    <div className="d-flex flex-wrap gap-2">
                                         {completion.missingFields.map((section, index) => (
                                             <span
                                                 key={index}
                                                 className="badge bg-light text-dark border px-3 py-1"
-                                                style={{ borderRadius: '12px', fontSize: '0.75rem' }}
+                                                style={{
+                                                    borderRadius: "12px",
+                                                    fontSize: "0.8rem",
+                                                }}
                                             >
                                                 {section}
                                             </span>
@@ -177,7 +306,22 @@ const InterviewerProfileCompletion = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="card-footer bg-white text-muted small">
+                    Last updated: {new Date().toLocaleString()}
+                </div>
             </div>
+
+            {/* Hover Card Effect */}
+            <style>{`
+        .hover-card {
+          transition: all 0.25s ease-in-out;
+        }
+        .hover-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 6px 16px rgba(78,115,223,0.15);
+        }
+      `}</style>
         </div>
     );
 };

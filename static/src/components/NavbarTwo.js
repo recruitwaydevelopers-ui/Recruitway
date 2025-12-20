@@ -82,7 +82,7 @@ const NavbarTwo = () => {
           {/* Logo */}
           <div className='logo'>
             <Link to='/'>
-              <img src='assets/img/logonew.png' alt='img' />
+              <img src='/assets/img/logonew.png' alt='img' />
             </Link>
           </div>
 

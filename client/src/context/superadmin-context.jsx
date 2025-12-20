@@ -18,6 +18,7 @@ const initialState = {
     },
     applicantProfile: {},
     interviewers: [],
+    companieswithprofile: [],
     companies: [],
     candidates: [],
     interviewes: [],
@@ -34,24 +35,6 @@ const SuperAdminProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(superAdminReducer, initialState)
     const { server, token } = useAuthContext()
-
-    // const fetchUsers = async () => {
-    //     dispatch({ type: "SET_LOADING" });
-    //     try {
-    //         const response = await axios.get(`${server}/api/v1/superadmin/getAllAuth`, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         });
-    //         const { auth } = response.data;
-    //         dispatch({ type: "SET_ALL_AUTH_FOR_SUPERADMIN", payload: auth });
-    //     } catch (err) {
-    //         console.log(err.response?.data?.message || 'Failed to fetch users');
-    //     } finally {
-    //         dispatch({ type: "SET_LOADING_FALSE" });
-    //     }
-    // };
-
 
     const getAllCompaniesWithJobs = async () => {
         dispatch({ type: "SET_LOADING" });
@@ -701,6 +684,32 @@ const SuperAdminProvider = ({ children }) => {
         }
     };
 
+    const getAllCompaniesWithProfileAndVerificationStatus = async () => {
+        dispatch({ type: "SET_LOADING" });
+
+        try {
+            const response = await axios.get(`${server}/api/v1/superadminDashboard/get-all-companies-with-profile-and-verification-status`,
+                {
+                    headers:
+                    {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+            const { companies } = response.data;
+
+            dispatch({ type: "SET_ALL_COMPANIES_WITH_PROFILE_AND_VERIFICATION_STATUS", payload: companies });
+        } catch (error) {
+            console.error("Error fetching companies:", error);
+
+            dispatch({ type: "SET_LOADING_FALSE" });
+
+            const errorMessage = error.response?.data?.message || "Something went wrong. Please try again.";
+            toast.dismiss();
+            toast.error(errorMessage);
+        }
+    };
+
     return (
         <SuperAdmminContext.Provider value={{
             ...state,
@@ -732,7 +741,8 @@ const SuperAdminProvider = ({ children }) => {
             getAllShortlistedCandidatesOfAllJobs,
             getReportOfInterview,
             getReportOfMockInterview,
-            getDetailedReportOfInterview
+            getDetailedReportOfInterview,
+            getAllCompaniesWithProfileAndVerificationStatus
         }}>
             {children}
         </SuperAdmminContext.Provider>

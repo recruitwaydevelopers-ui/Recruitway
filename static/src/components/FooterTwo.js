@@ -22,7 +22,7 @@ const FooterTwo = () => {
             <div className='col-lg-3 col-md-6'>
               <div className='widget'>
                 <div className='thumb'>
-                  <Link to='/'><img src='assets/img/logonew.png' alt='img' /></Link>
+                  <Link to='/'><img src='/assets/img/logonew.png' alt='img' /></Link>
                 </div>
                 <div className='details'>
                   <p>

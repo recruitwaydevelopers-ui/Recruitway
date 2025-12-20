@@ -64,6 +64,13 @@ const superAdminReducer = (state, action) => {
                 companies: action.payload
             }
 
+        case "SET_ALL_COMPANIES_WITH_PROFILE_AND_VERIFICATION_STATUS":
+            return {
+                ...state,
+                isLoading: false,
+                companieswithprofile: action.payload
+            }
+
         case "SET_ALL_CANDIDATES_WITH_VERIFICATION_STATUS":
             return {
                 ...state,

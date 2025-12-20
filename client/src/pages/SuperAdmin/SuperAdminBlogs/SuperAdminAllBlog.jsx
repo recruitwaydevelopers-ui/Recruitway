@@ -325,7 +325,7 @@ const SuperAdminAllBlog = () => {
     const navigate = useNavigate();
     const { server, token } = useAuthContext();
 
-    // Mock data based on the provided structure
+    // Data Of Blog
     useEffect(() => {
         const getBlogs = async () => {
             try {

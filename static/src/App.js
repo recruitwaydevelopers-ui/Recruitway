@@ -32,6 +32,8 @@ import { useEffect } from "react";
 import ScrollToTop from "react-scroll-to-top";
 import CookiesConsent from "./components/CookiesConsent";
 import TechInterviewPage from "./components/TechInterviewPage";
+import SingleBlog from "./components/SingleBlog";
+import AllBlogs from "./pages/AllBlogs";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -46,8 +48,10 @@ function App() {
       <Pagetopscroll />
       <Routes>
         <Route exact path='/' element={<HomeTwo />} />
-        <Route exact path='/Blog' element={<Blog />} />
-        <Route exact path='/BlogDetails' element={<BlogDetails />} />
+        {/* <Route exact path='/Blog' element={<Blog />} />
+        <Route exact path='/BlogDetails' element={<BlogDetails />} /> */}
+        <Route exact path='/allblogs' element={<AllBlogs />} />
+        <Route exact path='/blog/:name' element={<SingleBlog />} />
         <Route exact path='/interviewers' element={<Interviewers />} />
         <Route exact path='/rolefit' element={<RoleFit />} />
         <Route exact path='/interviewOutsourcing' element={<InterviewOutsourcing />} />

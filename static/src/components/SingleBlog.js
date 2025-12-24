@@ -95,7 +95,7 @@ const SingleBlog = () => {
                         <div className="col-lg-8 text-center py-5">
                             <h2>Blog not found</h2>
                             <p>The blog you're looking for doesn't exist.</p>
-                            <Link to="/blog" className="btn btn-primary mt-3">Back to Blogs</Link>
+                            <button className="btn btn-primary mt-3" onClick={()=> navigate("/")}>Back</button>
                         </div>
                     </div>
                 </div>

@@ -61,6 +61,19 @@ const BlogAreaTwo = () => {
     });
   };
 
+  function truncateTitle(title, maxLength = 30) {
+    if (!title) return "";
+
+    if (title.length <= maxLength) return title;
+
+    const trimmed = title.slice(0, maxLength);
+    return trimmed.slice(0, trimmed.lastIndexOf(" ")) + "...";
+  }
+
+  if (!blogs || blogs.length === 0) {
+    return;
+  }
+
   return (
     <>
       {/*===================== Blog Area Two start =====================*/}
@@ -76,7 +89,7 @@ const BlogAreaTwo = () => {
                 <p className="content mt-3">
                   Discover expert advice, industry trends, and innovative solutions to streamline your hiring process
                 </p>
-                
+
                 {/* View All Blogs Button */}
                 <Link to="/allblogs" className="view-all-btn mt-4">
                   View All Blogs
@@ -150,18 +163,9 @@ const BlogAreaTwo = () => {
                             </div>
                           </div>
 
-                          <h3 className="blog-title">{blog.title}</h3>
+                          <h3 className="blog-title">{truncateTitle(blog.title)}</h3>
 
                           <p className="blog-excerpt">{getExcerpt(blog.sections)}</p>
-
-                          {/* <div className="blog-tags mb-3">
-                            {extractTags(blog.sections).map((tag, idx) => (
-                              <span key={idx} className="blog-tag">
-                                <FaTag className="me-1" />
-                                {tag}
-                              </span>
-                            ))}
-                          </div> */}
 
                           <Link
                             className="blog-read-more"

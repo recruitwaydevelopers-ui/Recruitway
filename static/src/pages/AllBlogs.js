@@ -104,6 +104,10 @@ const AllBlogs = () => {
         return para.length > maxLength ? para.slice(0, maxLength) + "..." : para;
     };
 
+    if (!blogs || blogs.length === 0) {
+        return;
+    }
+
     if (loading) {
         return (
             <div className="preloader">

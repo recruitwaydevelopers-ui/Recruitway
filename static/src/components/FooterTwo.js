@@ -88,7 +88,7 @@ const FooterTwo = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to='/Blog'>
+                    <Link to='/allblogs'>
                       <FaChevronRight /> Blog
                     </Link>
                   </li>

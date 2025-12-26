@@ -130,7 +130,7 @@ const NavbarTwo = () => {
                 <a href='#'>Resources</a>
                 <ul className='sub-menu'>
                   <li>
-                    <Link to='/Blog'>Blog</Link>
+                    <Link to='/allblogs'>Blog</Link>
                   </li>
                 </ul>
               </li>
